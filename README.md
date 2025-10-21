@@ -47,6 +47,7 @@ The system also provides simple HTML pages for testing registration and login.
 | ORM            | Django ORM                          |
 
 **Dependencies:**
+```bash
 asgiref==3.10.0
 Django==5.2.7
 djangorestframework==3.16.1
@@ -55,30 +56,35 @@ psycopg2-binary==2.9.11
 PyJWT==2.10.1
 sqlparse==0.5.3
 tzdata==2025.2
-
+```
 ---
 
-## 3. Project Structure
-Zaid-Technical-Test-Project-Fintesa/
-├── fintesa_auth_project/
-├── main_app/
-│ ├── models.py
-│ ├── serializers.py
-│ ├── views.py
-│ ├── urls.py
-│ ├── apps.py
-│ ├── admin.py
-│ └── tests.py
-├── templates/
-│ ├── homepage.html
-│ ├── register_form.html
-│ └── login_form.html
-├── screens/
-│ └── test-screens/
-├── manage.py
-├── requirements.txt
-└── README.md
 
+## 3. Project Structure
+```bash
+ Zaid-Technical-Test-Project-Fintesa/
+ ├── fintesa_auth_project/
+ ├── main_app/
+ │   ├── models.py
+ │   ├── serializers.py
+ │   ├── views.py
+ │   ├── urls.py
+ │   ├── apps.py
+ │   ├── admin.py
+ │   └── tests.py
+ ├── templates/
+ │   ├── homepage.html
+ │   ├── register_form.html
+ │   └── login_form.html
+ ├── screens/test-screens/
+ │    ├── ...
+ │    ├── (It contains screenshots to demonstrate the project proficiency)
+ │    └── ...
+ │
+ ├── manage.py
+ ├── requirements.txt
+ └── README.md
+```
 
 ---
 
@@ -113,13 +119,77 @@ python manage.py createsuperuser
 
 # Run the development server
 python manage.py runserver
-
+```
 Access the app at http://127.0.0.1:8000/
 
-### 🧩 Screenshots
+---
 
-**Homepage**
-![Homepage](screens/test-screens/admin-homepage.png)
+
+## 6. Database Schema / Models
+```bash
+## User
+• id 
+• username (unique) 
+• email (unique) 
+• password (hashed) 
+• roles (ManyToMany -> Role)
+• user_permissions (ManyToMany -> Permission) 
+• is_active, is_staff, is_superuser
+
+ Role
+• id
+• name (unique, “admin”, “user”)
+• permissions (ManyToMany → Permission)
+ 
+ Permission
+• id
+• name (unique) 
+
+```
+---
+## 7. Running the Application
+```bash
+python manage.py runserver
+```
+Access URLs:
+```
+• Homepage → http://127.0.0.1:8000/
+• Register Test Page → http://127.0.0.1:8000/try/register/
+• Login Test Page → http://127.0.0.1:8000/try/login/
+• Django Admin Panel → http://127.0.0.1:8000/admin/
+```
+---
+
+##  8. API Endpoints
+
+| Method   |    Endpoint    |       Description       |   Auth    |
+| -------- | ---------------|-------------------------|---------- |
+| GET      |     /          | Homepage                | NO        |
+| POST     | /register/     | Register new user       | NO        |
+| POST     | /login/        | Login nd get JWT tokens | NO        |
+| GET      | /user/me/      | Get authenticated user  | YES       |
+| GET      | /admin-only    | Admin-only route        | YES       |
+| POST     | /logout/       | Logout (clinet)         | YES       |
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Screenshots
+
+**Admin Homepage**
+![Admin Homepage](screens/test-screens/admin-homepage.png)
 
 **Register Test**
 ![Register Test](screens/test-screens/register-test.png)
