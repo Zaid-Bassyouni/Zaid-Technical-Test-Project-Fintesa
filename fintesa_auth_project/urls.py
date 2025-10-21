@@ -31,6 +31,6 @@ urlpatterns = [
     path('register', api.RegisterView.as_view() , name='register'),
     path('login', api.loginView.as_view() , name='login'),
     path('users/me', api.MeView.as_view() , name='me'),
-    path('admin-only', api.AdminView.as_view() , name='admin_only'),
+    path('admin', api.AdminView.as_view() , name='admin'),
 
 ]
