@@ -1,5 +1,5 @@
 
-# from django.shortcuts import render
+from django.shortcuts import render
 from rest_framework.views import APIView 
 from .serializers import RegisterSerializer, LoginSerializer, UserSerializer
 from rest_framework import status, permissions
@@ -19,6 +19,11 @@ def get_tokens(user):
         "access": str(refresh.access_token)
     }
 
+
+
+def homepage(request):
+    
+    return render(request, 'homepage.html')
 
 class RegisterView(APIView):
     permission_classes = [permissions.AllowAny]
@@ -73,7 +78,7 @@ class AdminView(APIView):
     permission_classes = [IsAdminRole]
 
     def get(self,request):
-        return Response({"message" : f"Welcome admin {request.user.username}"} , status=201)
+        return Response({"message" : f"Welcome admin {request.user.username}"} , status=200)
     
 # -------------
 class LogoutView(APIView):
