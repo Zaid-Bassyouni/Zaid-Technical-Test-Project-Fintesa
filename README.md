@@ -174,16 +174,51 @@ Access URLs:
 
 ---
 
+##   9. Authentication & Authorization
+
+ JWT tokens handled via SimpleJWT. Authentication required for /users/me/ , /logout/ , and admin-only/ .
+ Role-based permission checks ensure admin-only access.
+
+Custom Permission Example:
+
+```bash
+from rest_framework import permissions
+ class IsAdminRole(permissions.BasePermission):
+ def has_permission(self, request, view):
+ user = request.user
+ return bool(user and user.is_authenticated and
+ user.roles.filter(name="admin").exists())
+```
+---
+
+##   10. Protected Routes & Permissions
+
+| Endpoint      | Protection         | Access              |
+| -------------- | ------------------|-------------------- |
+| /users/me/       | JWT Auth        | Authenticated users |
+|  /logout/      | JWT Auth          | Authenticated users |
+|  /admin-only/  | JWT Auth + Role   | Admin only          |
 
 
 
+---
+
+##  11. Testing
+ Manual Testing (via browser):
+• /try/register/ → Create new user
+• /try/login/ → Login and retrieve token
+  Command-Line Testing: Use curl or any REST client.
+  
+---
+
+##  12. Migrations & Seeding
 
 
-
-
-
-
-
+---
+##  13. Troubleshooting
+---
+##   14. Example cURL Commands
+---
 
 
 ### Screenshots
