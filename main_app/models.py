@@ -31,7 +31,7 @@ class User(AbstractUser):
 
     #  links
     roles = models.ManyToManyField(Role, blank=True, related_name="users")
-    user_permissions = models.ManyToManyField(
+    user_permissions_custom = models.ManyToManyField(
         Permission, blank=True, related_name="users_custom"
     )
 
