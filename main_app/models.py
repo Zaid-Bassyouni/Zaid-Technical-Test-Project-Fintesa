@@ -27,6 +27,7 @@ class User(AbstractUser):
     
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(unique=True)
+    is_active = models.BooleanField(default=True)
 
     #  links
     roles = models.ManyToManyField(Role, blank=True, related_name="users")
