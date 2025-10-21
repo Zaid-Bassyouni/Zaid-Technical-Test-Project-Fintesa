@@ -16,8 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from main_app.views import LogoutView 
+from main_app import views as api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(' ', include('main_app.urls')),
+    
+    #  can i use django built-in? such as:
+    # path("auth/logout/", LogoutView.as_view(next_page="login"), name="logout"),
+    #  path("auth/", include("django.contrib.auth.urls")),
+
+    path('admin', admin.site.urls),
+    path('register', api.RegisterView.as_view() , name='register'),
+    path('login', api.loginView.as_view() , name='login'),
+    path('users/me', api.MeView.as_view() , name='me'),
+    path('admin-only', api.AdminView.as_view() , name='admin_only'),
+
 ]
