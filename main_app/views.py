@@ -88,7 +88,7 @@ class LogoutView(APIView):
         return Response(status=204)
 
 
-# --------- Extra Functionalities --------
+# --------- Extra Functionalities to test --------
 
 def register_form(request):
     return render(request, "register_form.html")
