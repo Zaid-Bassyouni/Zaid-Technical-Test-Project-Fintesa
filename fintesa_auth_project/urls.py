@@ -33,4 +33,8 @@ urlpatterns = [
     path('users/me/', api.MeView.as_view() , name='me'),
     path('admin-only/', api.AdminView.as_view() , name='admin_only/'),
 
+    # ---- extra pathes
+    path("try/register/", api.register_form, name="try_register"),
+    path("try/login/", api.login_form, name="try_login"),
+
 ]

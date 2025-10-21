@@ -86,3 +86,12 @@ class LogoutView(APIView):
 
     def post(self, request):
         return Response(status=204)
+
+
+# --------- Extra Functionalities --------
+
+def register_form(request):
+    return render(request, "register_form.html")
+
+def login_form(request):
+    return render(request, "login_form.html")

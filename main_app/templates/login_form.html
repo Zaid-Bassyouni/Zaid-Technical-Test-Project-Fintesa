@@ -1,0 +1,32 @@
+<!doctype html><meta charset="utf-8"><title>Login</title>
+<h2>Login (POST /login/)</h2>
+<form id="f">
+  <input name="email" type="email" placeholder="email" required>
+  <input name="password" type="password" placeholder="password" required>
+  <button>Login</button>
+</form>
+<p>Access token:</p>
+<textarea id="token" rows="4" cols="80"></textarea>
+<button id="me">Call /users/me</button>
+<pre id="out"></pre>
+<script>
+let access = '';
+document.getElementById('f').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target).entries());
+  const res = await fetch('/login/', {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(data)
+  });
+  const body = await res.json().catch(()=>({}));
+  access = body.access || '';
+  document.getElementById('token').value = access;
+});
+document.getElementById('me').addEventListener('click', async () => {
+  const token = document.getElementById('token').value.trim();
+  const res = await fetch('/users/me/', {
+    headers: {'Authorization': 'Bearer ' + token}
+  });
+  document.getElementById('out').textContent = await res.text();
+});
+</script>

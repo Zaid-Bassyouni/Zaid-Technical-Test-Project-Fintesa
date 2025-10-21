@@ -1,0 +1,20 @@
+<!doctype html><meta charset="utf-8"><title>Register</title>
+<h2>Register (POST /register/)</h2>
+<form id="f">
+  <input name="username" placeholder="username" required>
+  <input name="email" type="email" placeholder="email" required>
+  <input name="password" type="password" placeholder="password" required>
+  <button>Register</button>
+</form>
+<pre id="out"></pre>
+<script>
+document.getElementById('f').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(e.target).entries());
+  const res = await fetch('/register/', {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(data)
+  });
+  document.getElementById('out').textContent = await res.text();
+});
+</script>
