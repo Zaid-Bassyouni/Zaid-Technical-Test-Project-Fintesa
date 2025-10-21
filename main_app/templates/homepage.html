@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fintesa Auth System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9fafb;
+            text-align: center;
+            margin-top: 80px;
+            color: #333;
+        }
+        h1 {
+            color: #005b96;
+        }
+        a {
+            color: #005b96;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Fintesa Authentication System</h1>
+    <p>This is a simple backend test project using Django + JWT.</p>
+    <div>
+        <a href="/admin/">Admin</a>
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
+        <a href="/users/me">My Profile</a>
+    </div>
+    <footer style="margin-top:50px;font-size:13px;color:#666;">
+        <p>© {{ year|default:"2025" }} Fintesa Technical Evaluation by Zaid</p>
+    </footer>
+</body>
+</html>
