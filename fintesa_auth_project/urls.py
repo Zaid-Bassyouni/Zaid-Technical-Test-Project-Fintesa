@@ -21,16 +21,16 @@ from main_app import views as api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(' ', include('main_app.urls')),
+    path('', include('main_app.urls')),
     
     #  can i use django built-in? such as:
     # path("auth/logout/", LogoutView.as_view(next_page="login"), name="logout"),
     #  path("auth/", include("django.contrib.auth.urls")),
 
-    path('register', api.RegisterView.as_view() , name='register'),
-    path('login', api.LoginView.as_view() , name='login'),
-    path('login', api.LogoutView.as_view() , name='logout'),
-    path('users/me', api.MeView.as_view() , name='me'),
-    path('admin', api.AdminView.as_view() , name='admin'),
+    path('register/', api.RegisterView.as_view() , name='register'),
+    path('login/', api.LoginView.as_view() , name='login'),
+    path('logout/', api.LogoutView.as_view() , name='logout'),
+    path('users/me/', api.MeView.as_view() , name='me'),
+    path('admin-only/', api.AdminView.as_view() , name='admin_only/'),
 
 ]
