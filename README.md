@@ -234,3 +234,6 @@ from rest_framework import permissions
 
 **Successful Admin Message**
 ![Admin Message](screens/test-screens/successful-admin-message-changed.png)
+
+**Project Documentation**
+![Fintesa Project Documentation](https://drive.google.com/file/d/11QXV_0iC1gNNkJUfE4_UjE6rQsMCsND1/view?usp=sharing)
